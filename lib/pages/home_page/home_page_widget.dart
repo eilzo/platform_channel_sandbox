@@ -23,6 +23,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -56,44 +58,82 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                child: Text(
-                  'Network Image 404 Backup',
-                  style: FlutterFlowTheme.of(context).bodyMedium,
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: Container(
-                  width: 200.0,
-                  height: 200.0,
-                  child: custom_widgets.NetworkImage(
-                    width: 200.0,
-                    height: 200.0,
-                    url: 'bloop.png',
+          child: Container(
+            width: MediaQuery.of(context).size.width * 1.0,
+            height: MediaQuery.of(context).size.height * 1.0,
+            decoration: BoxDecoration(),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                  child: Text(
+                    'Note: optimised for native Android/iOS usage',
+                    style: FlutterFlowTheme.of(context).bodyMedium,
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                child: Text(
-                  'Battery Life Platform Channel',
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                  child: Text(
+                    'Network Image 404 Backup',
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
                 ),
-              ),
-              Container(
-                width: 200.0,
-                height: 100.0,
-                child: custom_widgets.GetBatteryLife(
+                Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                    child: Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: custom_widgets.NetworkImage(
+                        width: 100.0,
+                        height: 100.0,
+                        url: 'bloop.png',
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  child: Text(
+                    'Battery Life Platform Channel',
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
+                ),
+                Container(
                   width: 200.0,
                   height: 100.0,
+                  child: custom_widgets.GetBatteryLife(
+                    width: 200.0,
+                    height: 100.0,
+                  ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  child: Text(
+                    'WebView with passed Headers',
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 1.0,
+                    height: 300.0,
+                    child: custom_widgets.WebViewWithHeaders(
+                      width: MediaQuery.of(context).size.width * 1.0,
+                      height: 300.0,
+                      url: 'https://www.flutterflow.io',
+                      horizontalScroll: false,
+                      verticalScroll: true,
+                      token: 'someToken',
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
